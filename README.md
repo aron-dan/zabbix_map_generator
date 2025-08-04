@@ -38,7 +38,7 @@ pip install pyzabbix
 Edite `config.py` ou substitua diretamente no `script_runner.py`:
 
 ```python
-ZABBIX_URL = "https://zabbix.sempre.tec.br"
+ZABBIX_URL = "https://zabbix.url.com.br"
 ZABBIX_USER = "usuario"
 ZABBIX_PASS = "senha"
 ```
