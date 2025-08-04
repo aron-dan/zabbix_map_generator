@@ -2,29 +2,28 @@
 
 Automatize a criação de mapas no Zabbix usando a API oficial. Este projeto coleta hosts e suas interfaces de status operacional, organizando tudo em um script para gerar mapas de rede com links entre os dispositivos.
 
----
-
 ## 🚀 Objetivo
 
 Evitar a criação manual e repetitiva de mapas, permitindo que redes grandes ou dinâmicas sejam representadas automaticamente.
 
----
-
 ## 🧰 Tecnologias
 
-- Python 3.8+
-- [PyZabbix](https://pypi.org/project/pyzabbix/) — integração com a Zabbix API
-- Regex — identificação de nomes de dispositivos nas interfaces
-- Arquivo `.txt` — saída do script para consumo pelo Zabbix
-
----
+- **Python 3.8+** — linguagem principal
+- **PyZabbix** — integração com a Zabbix API
+- **Regex** — identificação de nomes de dispositivos nas interfaces
+- **Arquivo `.txt`** — saída do script para consumo pelo Zabbix
 
 ## 📁 Estrutura do Projeto
 
-zabbix_map_generator/ ├── host_manager.py # Obtenção dos hostids ├── interface_manager.py # Filtragem de interfaces e identificação de links ├── map_creator.py # Geração do script de mapa ├── config.py # Credenciais e parâmetros ├── script_runner.py # Ponto de entrada principal
-
-
----
+```
+zabbix_map_generator/
+├── host_manager.py          # Obtenção dos hostids
+├── interface_manager.py     # Filtragem de interfaces e identificação de links
+├── map_creator.py           # Geração do script de mapa
+├── config.py                # Credenciais e parâmetros
+├── script_runner.py         # Ponto de entrada principal
+└── README.md               # Documentação do projeto
+```
 
 ## ⚙️ Como usar
 
@@ -32,43 +31,75 @@ zabbix_map_generator/ ├── host_manager.py # Obtenção dos hostids ├─�
 
 ```bash
 pip install pyzabbix
-2. Configure a conexão com o Zabbix
-Edite config.py ou substitua diretamente no script_runner.py:
+```
 
-python
+### 2. Configure a conexão com o Zabbix
+
+Edite `config.py` ou substitua diretamente no `script_runner.py`:
+
+```python
 ZABBIX_URL = "https://zabbix.sempre.tec.br"
 ZABBIX_USER = "usuario"
 ZABBIX_PASS = "senha"
-3. Defina os nomes dos hosts
-python
-hostnames = ["router-01", "switch-core", "firewall-dmz"]
-4. Execute o script
-bash
-python script_runner.py
-5. Verifique o arquivo gerado
-O script criará o MapCreateScript.txt com o conteúdo da chamada:
+```
 
-python
+### 3. Defina os nomes dos hosts
+
+```python
+hostnames = ["router-01", "switch-core", "firewall-dmz"]
+```
+
+### 4. Execute o script
+
+```bash
+python script_runner.py
+```
+
+### 5. Verifique o arquivo gerado
+
+O script criará o `MapCreateScript.txt` com o conteúdo da chamada:
+
+```python
 zapi.map.create(
-  name = "teste",
-  width = 1920,
-  height = 1080,
-  selements = [...],
-  links = [...]
+    name = "teste",
+    width = 1920,
+    height = 1080,
+    selements = [...],
+    links = [...]
 )
+```
+
 Esse conteúdo pode ser usado diretamente em automações no Zabbix.
 
-🔮 Possíveis melhorias futuras
-Adicionar testes unitários
+## 🔮 Possíveis melhorias futuras
 
-Transformar em pacote instalável com setup.py
+- [ ] Adicionar testes unitários
+- [ ] Transformar em pacote instalável com `setup.py`
+- [ ] Interface web simples para controle visual
+- [ ] Uso de `.env` para configurações seguras
+- [ ] Suporte a templates de mapas customizáveis
+- [ ] Integração com Docker para deploy facilitado
 
-Interface web simples para controle visual
+## 👨‍💻 Autor
 
-Uso de .env para configurações seguras
+Desenvolvido por **Daniel Aron** — especialista em redes e automações Zabbix.
 
-👨‍💻 Autor
-Desenvolvido por Daniel Aron — especialista em redes e automações Zabbix.
+## 📄 Licença
 
-📄 Licença
-Distribuído sob a licença MIT. Veja LICENSE para mais informações.
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+
+---
+
+### 🤝 Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para:
+
+1. Fazer fork do projeto
+2. Criar uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/nova-funcionalidade`)
+5. Abrir um Pull Request
+
+### 📞 Suporte
+
+Se encontrou algum problema ou tem sugestões, abra uma [issue](../../issues) no GitHub.
