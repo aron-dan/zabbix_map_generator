@@ -64,8 +64,8 @@ zapi.map.create(
     name = "teste",
     width = 1920,
     height = 1080,
-    selements = [...],
-    links = [...]
+    selements = [..],
+    links = [..]
 )
 ```
 
