@@ -1,5 +1,4 @@
 from pyzabbix.api import ZabbixAPI
-
 class HostManager:
     def __init__(self, zapi, hostnames):
         self.zapi = zapi
